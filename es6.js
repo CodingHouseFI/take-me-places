@@ -5,10 +5,6 @@ let myplace;
 let directionsService = new google.maps.DirectionsService();
 let currentStepIndex = 0, lastInfoWindow, instructions, position;
 
-// const interestingTypes = ['amusement_park', 'aquarium', 'art_gallery', 'bar', 'bowling_alley',
-//                           'cafe', 'casino', 'library', 'museum', 'night_club', 'park', 'restaurant', 'spa'];
-// const radiusInMeters = '1000';
-//
 import { interestingTypes, radiusInMeters } from './constants';
 
 function initialize() {
@@ -19,7 +15,7 @@ function initialize() {
 
     var request = {
       location: myplace,
-      radius: radiusInMeters,
+      radius: radiusInMeter,
       types: interestingTypes
     };
 
