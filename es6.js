@@ -6,6 +6,7 @@ let directionsService = new google.maps.DirectionsService();
 let currentStepIndex = 0, lastInfoWindow, instructions, position;
 
 import { interestingTypes, radiusInMeters } from './constants';
+import ArrayWithRand from './arrayWithRandom';
 
 function initialize() {
   navigator.geolocation.getCurrentPosition(function(position) {
@@ -15,7 +16,7 @@ function initialize() {
 
     var request = {
       location: myplace,
-      radius: radiusInMeter,
+      radius: radiusInMeters,
       types: interestingTypes
     };
 
@@ -25,7 +26,7 @@ function initialize() {
 
   function callback(results, status) {
     if (status == google.maps.places.PlacesServiceStatus.OK) {
-      var randomPlace = results[ Math.floor(Math.random()*results.length) ];
+      var randomPlace = ArrayWithRand.from(results).sample;
       getDirections(randomPlace);
     }
   }
