@@ -6,13 +6,13 @@ let directionsService = new google.maps.DirectionsService();
 let currentStepIndex = 0, lastInfoWindow, instructions, position;
 
 import { interestingTypes as types, radiusInMeters as radius } from './constants';
-import ArrayWithRand from './arrayWithRandom';
+import _ from 'lodash';
 
 let initialize = () => {
 
   let callback = (results, status) => {
     if (status == google.maps.places.PlacesServiceStatus.OK) {
-      let randomPlace = ArrayWithRand.from(results).sample;
+      let randomPlace = _.sample(results);
       getDirections(randomPlace);
     }
   };
